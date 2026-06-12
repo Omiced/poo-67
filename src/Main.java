@@ -8,8 +8,14 @@ public class Main {
 
         july.makeSound();
         july.showDetails();
+        july.adopt();
+        july.adopt("Mariana");
+        july.adopt(7);
 
         haru.makeSound();
         haru.showDetails();
+        haru.adopt();
+        haru.adopt("Katia");
+        haru.adopt(5);
     }
 }

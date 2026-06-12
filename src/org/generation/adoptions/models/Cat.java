@@ -1,6 +1,8 @@
 package org.generation.adoptions.models;
 
-public class Cat extends Pet{
+import org.generation.adoptions.interfaces.Adoptable;
+
+public class Cat extends Pet implements Adoptable {
     private String breed;
 
 
@@ -46,4 +48,27 @@ public class Cat extends Pet{
         System.out.println("Gato de nombre " + getName() + " tiene " +  getAge() +
                 " años es de color "  + getColor() + " y de raza " + getBreed());
     }
+
+    @Override
+    public void adopt() {
+        System.out.println("Felicidades " + getName() + " Fue adoptado");
+    }
+
+    /**
+     Sobrecarga de metodos, method overloading
+     * Es una tecnica de programacion orientada a objetos
+     * Donde podemos tener varios metodos con el mismo nombre pero diferente cantidad
+     * y tipo de parametros
+     * para que dependiendo del parametro actue diferente
+     * Esto ocurre en tiempo de compilacion
+     */
+
+    public void adopt(String ownerName){
+        System.out.println("Felicidades " + getName() + " fue adoptado por " + ownerName);
+    }
+
+    public void adopt(int membersNumber){
+        System.out.println("Felicidades " + getName() + " fue adoptado y se una a una familia de " + membersNumber);
+    }
+
 }
