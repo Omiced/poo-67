@@ -1,6 +1,8 @@
 package org.generation.adoptions.models;
 
 
+import org.generation.adoptions.exceptions.InvalidData;
+
 /**
  *En java una clase abstracta, es una clase que no se puede
  * instanciar (no podemos crear objetos) esta sirve de base para otras
@@ -40,9 +42,9 @@ public abstract class Pet {
      * @param age tipo int
      * @param color tipo String
      */
-    public Pet(String name, int age, String color){
-        this.name = name;
-        this.age = age;
+    public Pet(String name, int age, String color) throws  InvalidData{
+        setName(name);
+        setAge(age);
         this.color = color;
     }
 
@@ -57,11 +59,13 @@ public abstract class Pet {
      */
 
     /**
-     * Setter del name
-     * Permite fijar el valor de la propiedad name desde cualquier parte del proyecto
-     * @param name - type String
+     * Metodo setter de nombre, si el nombre esta vacio arroja una excepcion
+     * @param name - Type String
+     * @throws InvalidData - Exception
      */
-    public void setName(String name){
+    public void setName(String name)throws InvalidData {
+        //early return, si el nombre esta vacio lanza la excepcion
+        if(name == null || name.trim().isEmpty()) throw  new InvalidData("El nombre no puede estar vacio");
         this.name = name;
     }
 
@@ -78,7 +82,8 @@ public abstract class Pet {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(int age) throws InvalidData {
+        if(age <= 0 ) throw  new InvalidData("La edad no puede ser 0 o menor");
         this.age = age;
     }
 

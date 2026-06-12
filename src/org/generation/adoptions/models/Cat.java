@@ -1,5 +1,6 @@
 package org.generation.adoptions.models;
 
+import org.generation.adoptions.exceptions.InvalidData;
 import org.generation.adoptions.interfaces.Adoptable;
 
 public class Cat extends Pet implements Adoptable {
@@ -25,7 +26,7 @@ public class Cat extends Pet implements Adoptable {
      * @param color - Type String se hereda de Pet
      * @param breed - Type String propiedad exclusiva de Cat no heredada
      */
-    public Cat(String name, int age, String color, String breed){
+    public Cat(String name, int age, String color, String breed) throws InvalidData {
         super(name, age, color);
         this.breed =  breed;
     }
